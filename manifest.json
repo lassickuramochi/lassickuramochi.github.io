@@ -1,5 +1,5 @@
 {
-    "short_name": "PWA",
+    "short_name": "PWAお試し",
     "name": "PWA sample app",
     "display": "standalone",
     "start_url": "index.html",
@@ -11,4 +11,3 @@
         }
     ]
 }
-
