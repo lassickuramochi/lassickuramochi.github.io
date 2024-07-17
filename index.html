@@ -3,16 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-　　<!-- vue.js　-->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link rel="manifest" href="manifest.json">
     <title>PWA Sample</title>
   </head>
   <body>
-    <div id="app">
-        <p>{{ message }}</p>
-        <button v-on:click="reverseMessage">Reverse Message</button>
-     </div>
+    <div>
+        <p id="msg" style="height: 20px;"></p>
+        <button id="btn_on">ここをタップ！！</button>
+        <button id="btn_off">クリア</button>
+    </div>
     <script>
     // service workerの登録関係
     if ('serviceWorker' in navigator) {
@@ -22,17 +21,18 @@
         console.log('ServiceWorker registration failed: ', err);
     });
     }
-    // vue.jsの設定関係
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      },
-      methods: {
-        reverseMessage: function () {
-          this.message = this.message.split('').reverse().join('')
-        }
-      }
+
+    // ボタンを押した際の挙動
+    const btn_on = document.getElementById('btn_on');
+    const btn_off = document.getElementById('btn_off');
+    const msg = document.getElementById('msg');
+
+    btn_on.addEventListener('click', () => {
+        msg.textContent = 'ボタンが押されました';
+    });
+
+    btn_off.addEventListener('click', () => {
+        msg.textContent = '';
     });
     </script>
   </body>
