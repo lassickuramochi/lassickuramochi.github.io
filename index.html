@@ -14,17 +14,7 @@
     </div>
     <br>
     <div>
-      <a href="./page2.html">次のページ(画面遷移お試し→)</a>
-    </div>
-    <br>
-    <div>
-      <input type="text" id="txt_in">
-      <button id="btn_save" style="width: 80px; height: 60px; font-size: 12pt;">保存</button>
-      <br><br>
-      <button id="btn_load" style="width: 180px; height: 60px; font-size: 12pt;">入力内容を表示</button>
-      <button id="btn_clear" style="width: 160px; height: 60px; font-size: 12pt;">データを消去</button>
-      <br><br>
-      <p id="txt_out">ここに表示予定</p>
+      <a href="./page2.html">次のページ(データ保存お試し→)</a>
     </div>
   <script>
     // service workerの登録関係
@@ -54,44 +44,6 @@
 
     btn_off.addEventListener('click', () => {
         msg.textContent = '';
-    });
-
-    // ボタンを押した際の挙動 その2
-    const btn_save = document.getElementById('btn_save');
-    const btn_load = document.getElementById('btn_load');
-    const btn_clear = document.getElementById('btn_clear');
-    const txt_in = document.getElementById('txt_in');
-    const txt_out = document.getElementById('txt_out');
-
-    // 保存ボタン
-    btn_save.addEventListener('click', () => {
-      if (txt_in.value != "") {
-        records.unshift(txt_in.value);
-        json = JSON.stringify(records);    // JSON(文字列)に変換して
-        window.localStorage.setItem("records", json);    // ストレージに格納
-      }
-    });
-
-    // 表示ボタン
-    btn_load.addEventListener('click', () => {
-      if (records.length > 0) {
-        for (let i in records) {
-          if (i == 0) {
-            txt_out.textContent = records[i]
-          } else {
-            txt_out.textContent += " " + records[i]
-          }
-        }
-      } else {
-        txt_out.textContent = "(何も保存されていません)";
-      }
-    });
-
-    // 消去ボタン
-    btn_clear.addEventListener('click', () => {
-      records = []
-      json = JSON.stringify(records);    // JSON(文字列)に変換して
-      window.localStorage.setItem("records", json);    // ストレージに格納
     });
     </script>
   </body>
