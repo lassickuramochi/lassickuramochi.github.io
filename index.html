@@ -67,6 +67,8 @@
     btn_save.addEventListener('click', () => {
       if (txt_in.value != "") {
         records.unshift(txt_in.value);
+        json = JSON.stringify(records);    // JSON(文字列)に変換して
+        window.localStorage.setItem("records", json);    // ストレージに格納
       }
     });
 
@@ -88,6 +90,8 @@
     // 消去ボタン
     btn_clear.addEventListener('click', () => {
       records = []
+      json = JSON.stringify(records);    // JSON(文字列)に変換して
+      window.localStorage.setItem("records", json);    // ストレージに格納
     });
     </script>
   </body>
