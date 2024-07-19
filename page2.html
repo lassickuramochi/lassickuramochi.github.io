@@ -50,13 +50,13 @@
       if (records.length > 0) {
         for (let i in records) {
           if (i == 0) {
-            txt_out.textContent = records[i]
+            txt_out.innerHTML = records[i]
           } else {
-            txt_out.textContent += " " + records[i]
+            txt_out.innerHTML += "<br>" + records[i]
           }
         }
       } else {
-        txt_out.textContent = "(何も保存されていません)";
+        txt_out.innerHTML = "(何も保存されていません)";
       }
     });
 
