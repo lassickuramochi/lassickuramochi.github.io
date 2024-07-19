@@ -19,12 +19,12 @@
     <br>
     <div>
       <input type="text" id="txt_in">
-      <button id="btn_in">保存</button>
+      <button id="btn_save">保存</button>
       <br><br>
-      <button id="btn_out">入力内容を表示</button>
+      <button id="btn_load">入力内容を表示</button>
       <button id="btn_clear">データを消去</button>
       <br><br>
-      <p id="text_out">ここに表示予定</p>
+      <p id="txt_out">ここに表示予定</p>
     </div>
   <script>
     // service workerの登録関係
@@ -36,82 +36,59 @@
     });
     }
 
-    // DB定義
-    var name = 'localdb'
-    var version = '1.0'
-    var description = 'Web SQL Database'
-    var size = 2 * 1024 * 1024
-    var db = openDatabase(name, version, description, size)
-
-    // DB読み込み
-    db.transaction(function (tx) {
-      tx.executeSql('select id, name from user', [],
-        function (tx, results) {
-          // SUCCESS
-          for (i = 0; i < results.rows.length; i++){
-            console.log(results.rows.item(i).id)
-            console.log(results.rows.item(i).name)
-          }
-        },
-        function(err){
-          // ERROR
-          alert("DBの読み込みに失敗しました")
-        })
-    })
+    // localStorageに保存された配列の読み込み
+    let json = window.localStorage.getItem("records");    // JSON(文字列)を読みだして
+    let records = []
+    if (json != null) {
+      records = JSON.parse(json);    // オブジェクトに戻す
+    }
 
     // ボタンを押した際の挙動 その1
     const btn_on = document.getElementById('btn_on');
     const btn_off = document.getElementById('btn_off');
     const msg = document.getElementById('msg');
-    
-    btn_in.addEventListener('click', () => {
+
+    btn_on.addEventListener('click', () => {
         msg.textContent = 'ボタンが押されました';
     });
 
-    btn_clear.addEventListener('click', () => {
+    btn_off.addEventListener('click', () => {
         msg.textContent = '';
     });
 
     // ボタンを押した際の挙動 その2
-    const btn_in = document.getElementById('btn_in');
-    const btn_out = document.getElementById('btn_out');
+    const btn_save = document.getElementById('btn_save');
+    const btn_load = document.getElementById('btn_load');
     const btn_clear = document.getElementById('btn_clear');
-    const text_in = document.getElementById('text_in');
-    const text_out = document.getElementById('text_out');
+    const txt_in = document.getElementById('txt_in');
+    const txt_out = document.getElementById('txt_out');
 
-    btn_in.addEventListener('click', () => {
-      var input_text = text_in.value;
-      db.transaction(function (tx) {
-        tx.executeSql('insert into user (id, name) values (?, ?)', [1, input_text])
-      })
+    // 保存ボタン
+    btn_save.addEventListener('click', () => {
+      if (txt_in.value != "") {
+        records.unshift(txt_in.value);
+      }
     });
 
-    btn_out.addEventListener('click', () => {
-      text_out.textContent = "";
-      var text_result = "";
-
-      db.transaction(function (tx) {
-        tx.executeSql('select id, name from user', [],
-          function (tx, results) {
-            // SUCCESS
-            for (i = 0; i < results.rows.length; i++){
-              console.log(results.rows.item(i).id)
-              console.log(results.rows.item(i).name)
-              text_result += "\r" + results.rows.item(i).name;
-            }
-          },
-          function(err){
-            // ERROR
-          })
-      })
-      text_out.textContent = text_result;
-
-      alert(text_out.value);
-      text_out.value = "aaa";
+    // 表示ボタン
+    btn_load.addEventListener('click', () => {
+      if (records.length > 0) {
+        for (let i in records) {
+          if (i == 0) {
+            txt_out.textContent = records[i]
+          } else {
+            txt_out.textContent += " " + records[i]
+          }
+        }
+      } else {
+        txt_out.textContent = "(何も保存されていません)";
+      }
     });
 
-
-
+    // 消去ボタン
+    btn_clear.addEventListener('click', () => {
+      records = []
+    });
     </script>
   </body>
 </html>
