@@ -1,7 +1,9 @@
 // キャッシュファイルの指定
 var CACHE_NAME = 'pwa-sample-caches';
 var urlsToCache = [
-    '/lassickuramochi.github.io/',
+    './',
+    './index.html',
+    './page2.html',
 ];
 
 // インストール処理
