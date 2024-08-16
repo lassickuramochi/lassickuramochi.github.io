@@ -8,12 +8,19 @@
   </head>
   <body>
     <div>
+      <h2>バイブレーションサンプル</h2>
+      <button onclick="vibrate()" style="width: 160px; height: 80px; font-size: 12pt;">バイブレーション</button>
+    </div>
+    <br>
+    <div>
+        <h2>反応速度サンプル</h2>
         <p id="msg" style="height: 20px;"></p>
         <button id="btn_on" style="width: 160px; height: 160px; font-size: 12pt;">ここをタップ！！</button>
         <button id="btn_off" style="width: 160px; height: 160px; font-size: 12pt;">クリア</button>
     </div>
     <br>
     <div>
+      <h2>データ保存サンプル</h2>
       <a href="./page2.html">次のページ(データ保存お試し→)</a>
     </div>
   <script>
@@ -33,7 +40,7 @@
       records = JSON.parse(json);    // オブジェクトに戻す
     }
 
-    // ボタンを押した際の挙動 その1
+    // 反応速度ボタンを押した際の挙動
     const btn_on = document.getElementById('btn_on');
     const btn_off = document.getElementById('btn_off');
     const msg = document.getElementById('msg');
@@ -45,6 +52,11 @@
     btn_off.addEventListener('click', () => {
         msg.textContent = '';
     });
+
+    // バイブレーションボタンを押した際の挙動
+    function vibrate(){
+        window.navigator.vibrate(200);
+    }
     </script>
   </body>
 </html>
