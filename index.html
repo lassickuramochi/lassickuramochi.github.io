@@ -6,9 +6,206 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="manifest" href="manifest.json">
   <title>PWA Sample</title>
+  <style>
+    h2 {
+      margin-top: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    h5 {
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+
+    .i {
+      margin-top: 0.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .c {
+      margin: 0.2rem 0 0.2rem 0;
+      border: 1px solid #c1c1c1;
+      border-radius: 0px 2px 2px 2px;
+      padding: 5px;
+      background-color: #fafafa;
+      overflow: auto;
+      font-family: Consolas, 'Meiryo UI', 'Courier New', Monaco, monospace;
+      font-size: 10.5pt;
+    }
+
+    .description {
+      margin: 0;
+      font-size: 9pt;
+    }
+  </style>
 </head>
 
 <body>
+
+  <div>
+    <h2>inputパーツサンプル</h2>
+    参考：<a href="https://www.tohoho-web.com/html/input.htm">&lt;input&gt; - フォーム部品：入力欄 - とほほのWWW入門</a>
+    <h5>◆ テキスト入力フィールド：type="text"</h5>
+    <div class=i>
+      <p class="description">通常のテキストを入力します。</p>
+      <div class=c>
+        名前： <input type="text" value="abcdefg">
+      </div>
+    </div>
+    <h5>◆ パスワード入力フィールド：type="password"</h5>
+    <div class=i>
+      <p class="description">他の人にパスワードを見られないように、入力した文字がすべてアスタリスク(*)で表示されます。</p>
+      <div class=c>
+        パスワード： <input type="password" value="abcdefg">
+      </div>
+    </div>
+    <h5>◆ ファイル名入力フィールド：type="file"</h5>
+    <div class=i>
+      <p class="description">
+        ブラウザからWWWサーバーにファイルをアップロードする際に用います。入力フィールドの横には参照ボタンが表示されます。WWWサーバー側にはファイルを受け取るための特別なCGIスクリプトなどを設置しておく必要があります。セキュリティのために、初期値を設定したり、スクリプトで値を操作することはできません。
+      </p>
+      <div class=c>
+        転送ファイル： <input type="file">
+      </div>
+    </div>
+    <h5>◆ チェックボックス：type="checkbox"</h5>
+    <div class=i>
+      <p class="description">オン・オフの値を持つチェックボックスを表示します。</p>
+      <div class=c>
+        <input type="checkbox">チェックボックス
+      </div>
+    </div>
+    <h5>◆ ラジオボタン：type="radio"</h5>
+    <div class=i>
+      <p class="description">同じ name 属性を持つラジオボタンでひとつのラジオボタングループを形成します。複数の内、どれかひとつしかチェックできない点がチェックボックスと異なります。</p>
+      <div class=c>
+        <input type="radio" name="BOOL" checked>Yes
+        <input type="radio" name="BOOL">No
+      </div>
+    </div>
+    <h5>◆ 隠しフィールド：type="hidden"</h5>
+    <div class=i>
+      <p class="description">画面上には表示されません。ユーザに気づかれない値をこっそりと&lt;form&gt; の action で指定したアクションに渡すために用いられます。</p>
+      <div class=c>
+        <br>
+      </div>
+    </div>
+    <h5>◆ 実行ボタン：type="submit"</h5>
+    <div class=i>
+      <p class="description">このボタンを押すと、&lt;form&gt; タグの action属性で指定したアクションが呼び出されます。</p>
+      <div class=c>
+        <input type="submit" value="OK" onclick="return false;">
+      </div>
+    </div>
+    <h5>◆ 取消ボタン：type="reset"</h5>
+    <div class=i>
+      <p class="description">このボタンを押すと、それまでに入力した情報をすべてキャンセルして、最初から入力をやり直すことができます。</p>
+      <div class=c>
+        <input type="reset" value="取消" onclick="return false;">
+      </div>
+    </div>
+    <h5>◆ 汎用ボタン：type="button"</h5>
+    <div class=i>
+      <p class="description">&lt;input type="button" onclick="..."&gt;のように、ボタンを押した時にJavaScriptなどを起動する際によく用いられます。</p>
+      <div class=c>
+        <input type="button" value="Click me!" onclick="return false;">
+      </div>
+    </div>
+    <h5>◆ 画像ボタン：type="image"</h5>
+    <div class=i>
+      <p class="description">例えば、&lt;input type=image name="AAA" height=100 width=100 src="xxx.gif"&gt;
+        という画像ボタンをクリックすると、クリックした座標が
+        AAA.x=<i>n</i> AAA.y=<i>n</i> という形式でアクションに送信されます。</p>
+      <div class=c>
+        <input type="image" src="./images/icon.jpg" height=100 width=100 onclick="return false;" alt="link">
+      </div>
+    </div>
+    <h5>◆ 検索文字列：type="search"</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、検索文字列を入力します。</p>
+      <div class=c>
+        <input type="search"> <input type="button" value="検索">
+      </div>
+    </div>
+    <h5>◆ 電話番号：type="tel"</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、電話番号を入力します。入力文字に制限はありませんが、スマートフォンなどでは電話番号入力用のテンキーが表示されます。</p>
+      <div class=c>
+        電話番号： <input type="tel" name="tel" value="03-1234-5678">
+      </div>
+    </div>
+    <h5>◆ URL：type="url"</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、URLを入力します。http:// などで始まらない文字を入力するとバリデーションエラーとなります。</p>
+      <div class=c>
+        URL： <input type="url" name="url" size=50 value="http://www.example.com/">
+      </div>
+    </div>
+    <h5>◆ Eメール：type="email"</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、Eメールアドレスを入力します。@ を含まない場合やメールアドレスに使用できない文字を含んだ場合などにバリデーションエラーとなります。</p>
+      <div class=c>
+        E-Mail： <input type="email" name="email" size=50 value="admin@example.com">
+      </div>
+    </div>
+    <h5>◆ 日付：type="date" (H5d)</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、日付を入力します。値の例：2011-06-04</p>
+      <div class=c>
+        日付： <input type="date" name="date">
+      </div>
+    </div>
+    <h5>◆ 時刻：type="time"</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、時刻を入力します。値の例：23:59:59</p>
+      <div class=c>
+        時刻： <input type="time" name="time">
+      </div>
+    </div>
+    <h5>◆ 数値：type="number"</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、数値を範囲の中から指定します。</p>
+      <div class=c>
+        <input type="number" name="number" value="1234">
+      </div>
+    </div>
+    <h5>◆ レンジ：type="range"</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、数値を入力します。</p>
+      <div class=c>
+        <input type="range" name="range" min=0 max=100 value=50>
+      </div>
+    </div>
+    <h5>◆ 色：type="color"</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、色を入力します。値の例：#ffcccc</p>
+      <div class=c>
+        色： <input type="color" name="color">
+      </div>
+    </div>
+    <h5>◆ 時刻：type="datetime-local" (H5d)</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、ローカルタイムの日時を入力します。値の例：2011-06-04T12:00</p>
+      <div class=c>
+        日時： <input type="datetime-local" name="datetime-local">
+      </div>
+    </div>
+    <h5>◆ 月：type="month" (H5d)</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、年月を入力します。値の例：2011-06</p>
+      <div class=c>
+        年月： <input type="month" name="month">
+      </div>
+    </div>
+    <h5>◆ 週：type="week" (H5d)</h5>
+    <div class=i>
+      <p class="description">HTML5 で追加されたタイプで、週を入力します。値の例：2011-W23</p>
+      <div class=c>
+        週： <input type="week" name="week">
+      </div>
+    </div>
+  </div>
+  <br>
 
   <div>
     <h2>バイブレーションサンプル ※iOSは反応なし</h2>
