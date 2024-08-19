@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="manifest.json">
-    <title>PWA Sample</title>
-  </head>
-  <body>
-    <div>
-      <h2>バイブレーションサンプル ※iOSは反応なし</h2>
-      <button onclick="vibrate()" style="width: 160px; height: 80px; font-size: 12pt;">バイブレーション</button>
-    </div>
-    <br>
-    <div>
-        <h2>反応速度サンプル</h2>
-        <p id="msg" style="height: 20px;"></p>
-        <button id="btn_on" style="width: 160px; height: 160px; font-size: 12pt;">ここをタップ！！</button>
-        <button id="btn_off" style="width: 160px; height: 160px; font-size: 12pt;">クリア</button>
-    </div>
-    <br>
-    <div>
-      <h2>データ保存サンプル</h2>
-      <a href="./page2.html">次のページ(データ保存お試し→)</a>
-    </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <title>PWA Sample</title>
+</head>
+
+<body>
+
+  <div>
+    <h2>バイブレーションサンプル ※iOSは反応なし</h2>
+    <button onclick="vibrate()" style="width: 160px; height: 80px; font-size: 12pt;">バイブレーション</button>
+  </div>
+  <br>
+
+  <div>
+    <h2>反応速度サンプル</h2>
+    <p id="msg" style="height: 20px;"></p>
+    <button id="btn_on" style="width: 160px; height: 160px; font-size: 12pt;">ここをタップ！！</button>
+    <button id="btn_off" style="width: 160px; height: 160px; font-size: 12pt;">クリア</button>
+  </div>
+  <br>
+
+  <div>
+    <h2>データ保存サンプル</h2>
+    <a href="./page2.html">次のページ(データ保存お試し→)</a>
+  </div>
+
   <script>
     // service workerの登録関係
     if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service_worker.js').then(function(registration) {
+      navigator.serviceWorker.register('service_worker.js').then(function (registration) {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }).catch(function(err) {
+      }).catch(function (err) {
         console.log('ServiceWorker registration failed: ', err);
-    });
+      });
     }
 
     // localStorageに保存された配列の読み込み
@@ -46,17 +52,18 @@
     const msg = document.getElementById('msg');
 
     btn_on.addEventListener('click', () => {
-        msg.textContent = 'ボタンが押されました';
+      msg.textContent = 'ボタンが押されました';
     });
 
     btn_off.addEventListener('click', () => {
-        msg.textContent = '';
+      msg.textContent = '';
     });
 
     // バイブレーションボタンを押した際の挙動
-    function vibrate(){
-        window.navigator.vibrate(200);
+    function vibrate() {
+      window.navigator.vibrate(200);
     }
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
